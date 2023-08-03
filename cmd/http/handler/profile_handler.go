@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"github.com/Ceazzer/personal-website-server/core/domain/entity"
 	"github.com/Ceazzer/personal-website-server/core/usecase"
 	repositoryimpl "github.com/Ceazzer/personal-website-server/framework/repository"
 	usecaseimpl "github.com/Ceazzer/personal-website-server/framework/usecase"
@@ -19,7 +20,7 @@ func NewProfileHandler(e *echo.Echo, db *gorm.DB) *ProfileHandler {
 		panic(err)
 	}
 
-	_, err = usecaseimpl.ProfileUsecaseFunc(&usecase.ProfileUsecaseOpts{
+	profileUsecase, err := usecaseimpl.ProfileUsecaseFunc(&usecase.ProfileUsecaseOpts{
 		Repo: profileRepo,
 	})
 	if err != nil {
@@ -27,7 +28,13 @@ func NewProfileHandler(e *echo.Echo, db *gorm.DB) *ProfileHandler {
 	}
 
 	cph := func(c echo.Context) error {
+		profile := entity.Profile{}
 
+		if err := c.Bind(profile); err != nil {
+			return c.String(400, "Bad Request")
+		}
+
+		profileUsecase.CreateProfile(c.Request().Context(), &profile)
 		return c.String(200, "Profile Create Handler")
 	}
 

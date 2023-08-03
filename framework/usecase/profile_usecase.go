@@ -7,7 +7,7 @@ import (
 	"github.com/Ceazzer/personal-website-server/core/usecase"
 )
 
-func ProfileUsecase(opts *usecase.ProfileUsecaseOpts) (*usecase.ProfileUsecase, error) {
+func ProfileUsecaseFunc(opts *usecase.ProfileUsecaseOpts) (*usecase.ProfileUsecase, error) {
 
 	createProfile := func(ctx context.Context, data *entity.Profile) (int64, error) {
 		return opts.Repo.Create(data)

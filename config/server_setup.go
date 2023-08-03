@@ -19,12 +19,12 @@ func ServerSetup() *echo.Echo {
 	// Routes
 	// // Profile
 	v.Group("/profile")
-	e.GET("/", profileHandler.CreateProfileHandler)
-	e.POST("/", profileHandler.GetProfileHandler)
+	e.POST("/", profileHandler.CreateProfileHandler)
+	e.GET("/", profileHandler.GetProfileHandler)
 
 	// // Message
 	v.Group("/message")
-	e.GET("/", messageHandler.CreateMessageHandler)
+	e.POST("/", messageHandler.CreateMessageHandler)
 
 	return e
 }
