@@ -5,8 +5,8 @@ import (
 )
 
 type ProfileRepoResponse struct {
-	Create func(data *entity.Profile) (string, error)
-	Delete func(id int) (string, error)
+	Create func(data *entity.Profile) (int64, error)
+	Delete func(id int64) (int64, error)
 }
 
 type ProfileRepoFunc func() (*ProfileRepoResponse, error)
