@@ -2,22 +2,23 @@ package handler
 
 import "github.com/labstack/echo/v4"
 
-type ProfileHandler struct {
+type ProfileHandlerResponse struct {
 	CreateProfileHandler func(c echo.Context) error
 	GetProfileHandler    func(c echo.Context) error
 }
 
-func NewProfileHandler(e *echo.Echo) *ProfileHandler {
+func ProfileHandler(e *echo.Echo) *ProfileHandlerResponse {
 
 	cph := func(c echo.Context) error {
-		return nil
+
+		return c.String(200, "Profile Create Handler")
 	}
 
 	gph := func(c echo.Context) error {
-		return nil
+		return c.String(200, "Profile Get Handler")
 	}
 
-	return &ProfileHandler{
+	return &ProfileHandlerResponse{
 		CreateProfileHandler: cph,
 		GetProfileHandler:    gph,
 	}

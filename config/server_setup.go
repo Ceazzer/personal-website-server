@@ -10,7 +10,8 @@ func ServerSetup() *echo.Echo {
 	e := echo.New()
 
 	// Handlers
-	profileHandler := handler.NewProfileHandler(e)
+	profileHandler := handler.ProfileHandler(e)
+	messageHandler := handler.MessageHandler(e)
 
 	// Middleware
 	v := e.Group("/api/v1")
@@ -23,6 +24,7 @@ func ServerSetup() *echo.Echo {
 
 	// // Message
 	v.Group("/message")
+	e.GET("/", messageHandler.CreateMessageHandler)
 
 	return e
 }

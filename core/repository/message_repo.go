@@ -1,10 +1,12 @@
 package repository
 
-import "github.com/Ceazzer/personal-website-server/core/domain/dto"
+import (
+	"github.com/Ceazzer/personal-website-server/core/domain/entity"
+)
 
 type MessageRepoResponse struct {
-	FindByID func(id int) (*dto.MessageDTO, error)
-	Create   func(data *dto.MessageDTO) (string, error)
+	FindByID func(id int) (*entity.Message, error)
+	Create   func(entity *entity.Message) (string, error)
 }
 
 type MessageRepoFunc func() (*MessageRepoResponse, error)
