@@ -14,7 +14,7 @@ func ServerSetup() *echo.Echo {
 	messageHandler := handler.MessageHandler(e)
 
 	// Middleware
-	v := e.Group("/api/v1")
+	v := e.Group("/v1")
 
 	// Routes
 	// // Profile

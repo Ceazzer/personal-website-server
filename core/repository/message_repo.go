@@ -7,6 +7,7 @@ import (
 type MessageRepoResponse struct {
 	FindByID func(id int) (*entity.Message, error)
 	Create   func(entity *entity.Message) (string, error)
+	Delete   func(id int) (string, error)
 }
 
 type MessageRepoFunc func() (*MessageRepoResponse, error)

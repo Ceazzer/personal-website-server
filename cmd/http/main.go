@@ -6,6 +6,8 @@ func main() {
 	// Setup environment variables
 	config.DotenvSetup()
 
+	config.ResendSetup()
+
 	// Setup server
 	e := config.ServerSetup()
 
