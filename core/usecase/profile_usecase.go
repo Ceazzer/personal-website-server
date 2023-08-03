@@ -7,8 +7,13 @@ import (
 	"github.com/Ceazzer/personal-website-server/core/repository"
 )
 
-type ProfileOpts struct {
-	Repo repository.ProfileRepoFunc
+type ProfileUsecase struct {
+	CreateProfile func(ctx context.Context, data *entity.Profile) (int64, error)
+	DeleteProfile func(ctx context.Context, id int64) (int64, error)
 }
 
-type CreateProfileFunc func(ctx context.Context, data *entity.Profile, opts ProfileOpts) (string, error)
+type ProfileUsecaseOpts struct {
+	Repo repository.ProfileRepo
+}
+
+type ProfileUseCaseFunc func(opts *ProfileUsecaseOpts) (*ProfileUsecase, error)

@@ -6,7 +6,7 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-func ProfileRepoFunc(db *gorm.DB) (*repository.ProfileRepoResponse, error) {
+func ProfileRepoFunc(db *gorm.DB) (*repository.ProfileRepo, error) {
 
 	create := func(data *entity.Profile) (int64, error) {
 		result := db.Create(data)
@@ -18,7 +18,7 @@ func ProfileRepoFunc(db *gorm.DB) (*repository.ProfileRepoResponse, error) {
 		return id, result.Error
 	}
 
-	return &repository.ProfileRepoResponse{
+	return &repository.ProfileRepo{
 		Create: create,
 		Delete: delete,
 	}, nil
