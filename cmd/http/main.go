@@ -1,6 +1,8 @@
 package main
 
-import "github.com/Ceazzer/personal-website-server/config"
+import (
+	"github.com/Ceazzer/personal-website-server/config"
+)
 
 func main() {
 	// Setup environment variables

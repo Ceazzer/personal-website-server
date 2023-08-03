@@ -13,7 +13,7 @@ type ProfileUsecase struct {
 }
 
 type ProfileUsecaseOpts struct {
-	Repo repository.ProfileRepo
+	Repo *repository.ProfileRepo
 }
 
 type ProfileUseCaseFunc func(opts *ProfileUsecaseOpts) (*ProfileUsecase, error)

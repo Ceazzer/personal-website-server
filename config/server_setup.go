@@ -10,7 +10,7 @@ func ServerSetup() *echo.Echo {
 	e := echo.New()
 
 	// Handlers
-	profileHandler := handler.ProfileHandler(e)
+	profileHandler := handler.NewProfileHandler(e, nil)
 	messageHandler := handler.MessageHandler(e)
 
 	// Middleware
