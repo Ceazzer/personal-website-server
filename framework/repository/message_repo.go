@@ -2,7 +2,7 @@ package repositoryimpl
 
 import (
 	"github.com/Ceazzer/personal-website-server/core/domain/entity"
-	"github.com/Ceazzer/personal-website-server/core/repository"
+	repository "github.com/Ceazzer/personal-website-server/core/repository/message"
 )
 
 // MessageRepoImpl returns a MessageRepoResponse struct

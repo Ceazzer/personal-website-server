@@ -7,15 +7,15 @@ import (
 )
 
 // Functions
-type profileCreateFunc func(data *entity.Profile) (int64, error)
 type profileDeleteFunc func(id int64) (int64, error)
+type profileCreateFunc func(data *entity.Profile) (int64, error)
+
+type ProfileRepoFunc func(db *gorm.DB) (*RepoType, error)
 
 type RepoType struct {
 	Create profileCreateFunc
 	Delete profileDeleteFunc
 }
-
-type ProfileRepoFunc func() (*RepoType, error)
 
 func New(db *gorm.DB) (*RepoType, error) {
 

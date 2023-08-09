@@ -2,8 +2,8 @@ package handler
 
 import (
 	"github.com/Ceazzer/personal-website-server/core/domain/entity"
+	profilerepository "github.com/Ceazzer/personal-website-server/core/repository/profile"
 	"github.com/Ceazzer/personal-website-server/core/usecase"
-	repositoryimpl "github.com/Ceazzer/personal-website-server/framework/repository"
 	usecaseimpl "github.com/Ceazzer/personal-website-server/framework/usecase"
 	"github.com/jinzhu/gorm"
 	"github.com/labstack/echo/v4"
@@ -15,7 +15,7 @@ type ProfileHandler struct {
 }
 
 func NewProfileHandler(e *echo.Echo, db *gorm.DB) *ProfileHandler {
-	profileRepo, err := repositoryimpl.ProfileRepoFunc(db)
+	profileRepo, err := profilerepository.New(db)
 	if err != nil {
 		panic(err)
 	}

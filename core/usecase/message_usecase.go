@@ -5,7 +5,7 @@ import (
 
 	"github.com/Ceazzer/personal-website-server/core/domain/dto"
 	"github.com/Ceazzer/personal-website-server/core/domain/entity"
-	"github.com/Ceazzer/personal-website-server/core/repository"
+	repository "github.com/Ceazzer/personal-website-server/core/repository/message"
 	"github.com/Ceazzer/personal-website-server/core/service"
 )
 

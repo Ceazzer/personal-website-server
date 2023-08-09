@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/Ceazzer/personal-website-server/core/domain/entity"
-	"github.com/Ceazzer/personal-website-server/core/repository"
+	profilerepository "github.com/Ceazzer/personal-website-server/core/repository/profile"
 )
 
 type ProfileUsecase struct {
@@ -13,7 +13,7 @@ type ProfileUsecase struct {
 }
 
 type ProfileUsecaseOpts struct {
-	Repo *repository.ProfileRepo
+	Repo *profilerepository.RepoType
 }
 
 type ProfileUseCaseFunc func(opts *ProfileUsecaseOpts) (*ProfileUsecase, error)
