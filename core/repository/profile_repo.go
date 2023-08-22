@@ -1,14 +1,13 @@
-package profilerepository
+package repository
 
 import (
-	"github.com/Ceazzer/personal-website-server/core/domain/entity"
-
+	"github.com/Ceazzer/personal-website-server/core/domain"
 	"github.com/jinzhu/gorm"
 )
 
 // Functions
 type profileDeleteFunc func(id int64) (int64, error)
-type profileCreateFunc func(data *entity.Profile) (int64, error)
+type profileCreateFunc func(data *domain.Profile) (int64, error)
 
 type ProfileRepoFunc func(db *gorm.DB) (*RepoType, error)
 
@@ -19,13 +18,13 @@ type RepoType struct {
 
 func New(db *gorm.DB) (*RepoType, error) {
 
-	create := func(data *entity.Profile) (int64, error) {
+	create := func(data *domain.Profile) (int64, error) {
 		result := db.Create(data)
 		return data.ID, result.Error
 	}
 
 	delete := func(id int64) (int64, error) {
-		result := db.Delete(&entity.Profile{}, id)
+		result := db.Delete(&domain.Profile{}, id)
 		return id, result.Error
 	}
 

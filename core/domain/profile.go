@@ -1,4 +1,4 @@
-package entity
+package domain
 
 type Profile struct {
 	ID        int64  `json:"id"`
