@@ -1,4 +1,4 @@
-package dto
+package repositorydto
 
 import "github.com/Ceazzer/personal-website-server/core/domain"
 

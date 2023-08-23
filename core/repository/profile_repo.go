@@ -5,31 +5,25 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-// Functions
-type profileDeleteFunc func(id int64) (int64, error)
-type profileCreateFunc func(data *domain.Profile) (int64, error)
-
-type ProfileRepoFunc func(db *gorm.DB) (*RepoType, error)
-
-type RepoType struct {
-	Create profileCreateFunc
-	Delete profileDeleteFunc
+type ProfileRepository interface {
+	Create(data *domain.Profile) (int64, error)
+	Delete(id int64) (int64, error)
 }
 
-func New(db *gorm.DB) (*RepoType, error) {
+type profileRepository struct {
+	db *gorm.DB
+}
 
-	create := func(data *domain.Profile) (int64, error) {
-		result := db.Create(data)
-		return data.ID, result.Error
-	}
+func NewProfileRepository() ProfileRepository {
+	return &profileRepository{}
+}
 
-	delete := func(id int64) (int64, error) {
-		result := db.Delete(&domain.Profile{}, id)
-		return id, result.Error
-	}
+func (r *profileRepository) Create(data *domain.Profile) (int64, error) {
+	result := r.db.Create(data)
+	return data.ID, result.Error
+}
 
-	return &RepoType{
-		Create: create,
-		Delete: delete,
-	}, nil
+func (r *profileRepository) Delete(id int64) (int64, error) {
+	result := r.db.Delete(&domain.Profile{}, id)
+	return id, result.Error
 }

@@ -1,12 +1,13 @@
 package service
 
-import (
-	"github.com/Ceazzer/personal-website-server/core/domain/dto"
-	"github.com/resendlabs/resend-go"
-)
-
-type ResendServiceResponse struct {
-	SendEmail func(data *dto.MessageDTO) (string, error)
+type ResendService interface {
+	SendMail()
 }
 
-type ResendServiceFunc func(client *resend.Client) (*ResendServiceResponse, error)
+type resendService struct{}
+
+func NewResendService() ResendService {
+	return &resendService{}
+}
+
+func (s *resendService) SendMail() {}
